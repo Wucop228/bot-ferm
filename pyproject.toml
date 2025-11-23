@@ -1,0 +1,19 @@
+[project]
+name = "bot-ferm"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.17.2",
+    "asyncpg>=0.30.0",
+    "fastapi>=0.121.3",
+    "pydantic[email]>=2.12.4",
+    "sqlalchemy>=2.0.44",
+    "uvicorn[standard]>=0.38.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.1",
+]
