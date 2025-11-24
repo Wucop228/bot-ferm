@@ -17,6 +17,11 @@ class Settings(BaseSettings):
     DB_USER: str
     DB_PASSWORD: str
 
+    SECRET_KEY: str
+    ALGORITHM: str = "HS256"
+
+    LOG_LEVEL: str = "INFO"
+
     model_config = SettingsConfigDict(
         env_file=ENV_FILE,
         extra="ignore"
