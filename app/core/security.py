@@ -8,13 +8,18 @@ from app.core.config import get_settings
 
 pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
 
+
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     return pwd_context.verify(plain_password, hashed_password)
+
 
 def get_password_hash(password: str) -> str:
     return pwd_context.hash(password)
 
-def create_jwt_token(data: dict[str, Any], expires_delta: timedelta, token_type: str = "access") -> str:
+
+def create_jwt_token(
+    data: dict[str, Any], expires_delta: timedelta, token_type: str = "access"
+) -> str:
     settings = get_settings()
     to_encode = data.copy()
     now = datetime.now(timezone.utc)

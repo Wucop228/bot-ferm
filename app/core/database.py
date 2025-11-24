@@ -1,7 +1,12 @@
 from datetime import datetime
 from typing import AsyncIterator
 
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncAttrs, AsyncSession
+from sqlalchemy.ext.asyncio import (
+    create_async_engine,
+    async_sessionmaker,
+    AsyncAttrs,
+    AsyncSession,
+)
 from sqlalchemy.orm import declared_attr, Mapped, mapped_column, DeclarativeBase
 from sqlalchemy import func, DateTime
 

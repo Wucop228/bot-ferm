@@ -11,11 +11,13 @@ from app.core.security import get_password_hash
 
 router = APIRouter(prefix="/api/v1/users", tags=["users"])
 
+
 @router.get("/", response_model=list[UserRead])
 async def get_users(db: AsyncSession = Depends(get_db_session)):
     dao = UserDAO(db)
     users = await dao.find_all()
     return users
+
 
 @router.post("/", response_model=UserRead, status_code=status.HTTP_201_CREATED)
 async def create_user(user_in: UserCreate, db: AsyncSession = Depends(get_db_session)):
@@ -34,6 +36,7 @@ async def create_user(user_in: UserCreate, db: AsyncSession = Depends(get_db_ses
         )
 
     return user
+
 
 @router.post("/{user_id}/acquire-lock", response_model=UserRead)
 async def acquire_lock(user_id: UUID, db: AsyncSession = Depends(get_db_session)):

@@ -37,7 +37,7 @@ class BaseDAO:
         await self.session.refresh(obj)
         return obj
 
-    async def update( self, id_: UUID, values):
+    async def update(self, id_: UUID, values):
         stmt = (
             sqlalchemy_update(self.model)  # type: ignore[arg-type]
             .where(self.model.id == id_)  # type: ignore[attr-defined]

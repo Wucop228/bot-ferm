@@ -22,10 +22,7 @@ class Settings(BaseSettings):
 
     LOG_LEVEL: str = "INFO"
 
-    model_config = SettingsConfigDict(
-        env_file=ENV_FILE,
-        extra="ignore"
-    )
+    model_config = SettingsConfigDict(env_file=ENV_FILE, extra="ignore")
 
     def async_db_url(self) -> str:
         if self.DATABASE_URL:
@@ -35,9 +32,11 @@ class Settings(BaseSettings):
             f"@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
         )
 
+
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
+
 
 def get_async_db_url() -> str:
     return get_settings().async_db_url()

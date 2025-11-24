@@ -12,7 +12,11 @@ router = APIRouter(prefix="/api/v1/auth", tags=["auth-v1"])
 
 
 @router.post("/login")
-async def login_v1(payload: LoginRequest, response: Response, db: AsyncSession = Depends(get_db_session)):
+async def login_v1(
+    payload: LoginRequest,
+    response: Response,
+    db: AsyncSession = Depends(get_db_session),
+):
     dao = UserDAO(db)
     user = await dao.find_one(login=payload.login)
 

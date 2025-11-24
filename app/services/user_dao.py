@@ -4,6 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.base_dao import BaseDAO
 from app.models.user import User
 
+
 class UserDAO(BaseDAO):
     model = User
 
